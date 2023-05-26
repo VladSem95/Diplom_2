@@ -15,7 +15,6 @@ public class UserOrdersTest {
     private User user;
     OrderClient orderClient;
 
-    private UserCredentials credentials;
 
     @Before
     public void setUp(){
@@ -28,7 +27,7 @@ public class UserOrdersTest {
         try {
             userClient.delete(clientBearerToken);
         }
-        catch(NullPointerException Exception){
+        catch(NullPointerException exception){
         }
     }
     @DisplayName("Успешное получение заказа по конкретному клиенту")

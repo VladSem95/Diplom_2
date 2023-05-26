@@ -1,5 +1,4 @@
 package com.my;
-import org.apache.commons.lang3.RandomStringUtils;
 import com.github.javafaker.Faker;
 public class UserGenerator {
     public static User getRandom(){

@@ -30,7 +30,7 @@ public class ChangeUserTest {
         try {
             userClient.delete(clientBearerToken);
         }
-        catch(NullPointerException Exception){
+        catch(NullPointerException exception){
         }
     }
 

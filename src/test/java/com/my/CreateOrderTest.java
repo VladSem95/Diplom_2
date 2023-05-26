@@ -13,7 +13,6 @@ public class CreateOrderTest {
     private UserClient userClient;
     private User user;
     private String clientBearerToken;
-    private UserCredentials credentials;
     Ingredients ingredients;
     @Before
     public void setUp(){
@@ -31,7 +30,7 @@ public class CreateOrderTest {
         try {
             userClient.delete(clientBearerToken);
         }
-        catch(NullPointerException Exception){
+        catch(NullPointerException exception){
         }
     }
 

@@ -1,7 +1,6 @@
 package com.my;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.apache.commons.lang3.ObjectUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class NoParamUserCreateTest {
             clientBearerToken = clientBearerToken.replace("Bearer ","");
             userClient.delete(clientBearerToken);
         }
-        catch(NullPointerException Exception){
+        catch(NullPointerException exception){
         }
     }
 

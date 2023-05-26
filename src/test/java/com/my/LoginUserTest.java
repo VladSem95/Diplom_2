@@ -13,7 +13,7 @@ public class LoginUserTest {
     private UserClient userClient;
     private String clientBearerToken;
     private User user;
-    private UserCredentials credentials;
+
 
     @Before
     public void setUp(){
@@ -25,7 +25,7 @@ public class LoginUserTest {
         try {
             userClient.delete(clientBearerToken);
         }
-        catch(NullPointerException Exception){
+        catch(NullPointerException exception){
         }
     }
 
@@ -35,7 +35,8 @@ public class LoginUserTest {
         ValidatableResponse createResponse = userClient.create(user);
         clientBearerToken = createResponse.extract().path("accessToken");
         clientBearerToken = clientBearerToken.replace("Bearer ","");
-        ValidatableResponse responseLogin = userClient.login(credentials.from(user),clientBearerToken);
+
+        ValidatableResponse responseLogin = userClient.login(UserCredentials.from(user),clientBearerToken);
         int statusCodeSuccessLogin = responseLogin.extract().statusCode();
         boolean textMessage = responseLogin.extract().path("success");
         assertTrue(textMessage);
@@ -49,7 +50,8 @@ public class LoginUserTest {
         clientBearerToken = createResponse.extract().path("accessToken");
         clientBearerToken = clientBearerToken.replace("Bearer ","");
         userClient.delete(clientBearerToken);
-        ValidatableResponse responseLogin = userClient.login(credentials.from(user),clientBearerToken);
+
+        ValidatableResponse responseLogin = userClient.login(UserCredentials.from(user),clientBearerToken);
         int statusCodeUnsuccessfulLogin = responseLogin.extract().statusCode();
         String textMessageError = responseLogin.extract().path("message");
         assertEquals(StatusCodeAndTextError.getEmailOrPasswordAreIncorrectStatusCode(),statusCodeUnsuccessfulLogin);
